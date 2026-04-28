@@ -4,10 +4,12 @@ export default defineConfig({
   title: "Проектопакалипсис",
   description: "A VitePress Site",
   lang: 'ru-RU',
+  base: '/Knowledge-Base/',
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
+  ignoreDeadLinks: true,
 
   themeConfig: {
     nav: [
