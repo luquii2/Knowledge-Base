@@ -9,13 +9,7 @@ hero:
   actions:
     - theme: brand
       text: "Начать исследование"
-      link: /places/dk-sverdlova
-    - theme: alt
-      text: "Рок-карта Екатеринбурга"
-      link: /map
-    - theme: alt
-      text: "События 2026"
-      link: /events/2026
+      link: /places/
 
 features:
   - title: "40 лет Свердловскому рок-клубу"

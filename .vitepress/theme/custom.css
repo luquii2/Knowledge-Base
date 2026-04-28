@@ -72,9 +72,6 @@
 }
 
 /* Верхняя навигация */
-.VPNav {
-    backdrop-filter: blur(16px);
-}
 
 .VPNavBar .title {
     font-weight: 800;

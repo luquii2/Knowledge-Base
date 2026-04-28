@@ -77,5 +77,6 @@ export default defineConfig({
       level: 'deep',
       label: 'Содержание страницы'
     },
+    sidebarMenuLabel: 'Меню',
   }
 })
