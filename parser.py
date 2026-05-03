@@ -4,7 +4,8 @@ from sentence_transformers import SentenceTransformer
 
 # 1. Загружаем модель для векторизации
 print("Загрузка модели...")
-model = SentenceTransformer('all-MiniLM-L6-v2')
+#Заменил языковую модель на multilingual, чтобы она могла работать с русским языком
+model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2') 
 
 # Изменили параметры на 1200 и 120
 def get_chunks(text, chunk_size=1200, overlap=120):
