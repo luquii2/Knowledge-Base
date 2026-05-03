@@ -2,7 +2,8 @@ import json
 from sentence_transformers import SentenceTransformer, util
 
 print("Загрузка модели для поиска...", flush=True)
-model = SentenceTransformer('all-MiniLM-L6-v2')
+#Заменил языковую модель на multilingual, чтобы она могла работать с русским языком
+model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2') 
 print("Модель загружена!", flush=True)
 
 def load_db(filename='vector_db.json'):
