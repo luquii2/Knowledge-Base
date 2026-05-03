@@ -7,13 +7,13 @@ print("Загрузка модели...")
 #Заменил языковую модель на multilingual, чтобы она могла работать с русским языком
 model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2') 
 
-# Изменили параметры на 1200 и 120
-def get_chunks(text, chunk_size=1200, overlap=120):
-    """Разбивает текст на блоки по 1200 символов с нахлестом 120"""
+# Изменили параметры на 600 и 100
+def get_chunks(text, chunk_size=600, overlap=100):
+    """Разбивает текст на блоки по 600 символов с нахлестом 100"""
     step = chunk_size - overlap
     
     chunks = []
-    # Идем по тексту с шагом 1080 (1200 - 120)
+    # Идем по тексту с шагом 500 (600 - 100)
     for i in range(0, len(text), step):
         chunk = text[i : i + chunk_size]
         if chunk.strip(): # Если кусок не пустой, сохраняем
