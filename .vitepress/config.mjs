@@ -189,6 +189,11 @@ export default defineConfig({
       level: 'deep',
       label: 'Содержание страницы'
     },
+    docFooter: {
+      prev: 'Предыдущая страница',
+      next: 'Следующая страница'
+    },
+
     sidebarMenuLabel: 'Меню',
   }
 })
