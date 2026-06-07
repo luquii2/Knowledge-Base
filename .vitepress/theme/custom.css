@@ -1,17 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-    /* Шрифты */
+
     --vp-font-family-base: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --vp-font-family-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-    /* Главный брендовый цвет */
+
     --vp-c-brand-1: #d97706;
     --vp-c-brand-2: #f59e0b;
     --vp-c-brand-3: #fbbf24;
     --vp-c-brand-soft: rgba(245, 158, 11, 0.16);
 
-    /* Кнопки */
     --vp-button-brand-border: #d97706;
     --vp-button-brand-text: #111827;
     --vp-button-brand-bg: #f59e0b;
@@ -38,7 +37,7 @@
     --vp-home-hero-image-filter: blur(44px);
 }
 
-/* Светлая тема */
+
 :root {
     --vp-c-bg: #fffaf0;
     --vp-c-bg-alt: #f8efe0;
@@ -52,7 +51,6 @@
     --vp-c-divider: rgba(120, 53, 15, 0.14);
 }
 
-/* Тёмная тема */
 .dark {
     --vp-c-bg: #15110f;
     --vp-c-bg-alt: #1d1714;
@@ -71,20 +69,19 @@
     --vp-c-brand-soft: rgba(251, 191, 36, 0.16);
 }
 
-/* Верхняя навигация */
 
 .VPNavBar .title {
     font-weight: 800;
     letter-spacing: -0.02em;
 }
 
-/* Активные ссылки */
+
 .VPNavBarMenuLink.active,
 .VPSidebarItem.is-active > .item .link > .text {
     font-weight: 700;
 }
 
-/* Заголовки */
+
 .vp-doc h1 {
     font-weight: 800;
     letter-spacing: -0.04em;
@@ -95,13 +92,13 @@
     letter-spacing: -0.03em;
 }
 
-/* Текст страниц */
+
 .vp-doc p,
 .vp-doc li {
     line-height: 1.75;
 }
 
-/* Карточки features на главной */
+
 .VPFeature {
     border-radius: 18px;
     background: var(--vp-c-bg-soft);
@@ -114,18 +111,34 @@
     border-color: var(--vp-c-brand-2);
 }
 
-/* Блоки tip/warning/details */
+
 .custom-block {
     border-radius: 16px;
 }
 
-/* Таблицы */
 .vp-doc table {
     border-radius: 14px;
     overflow: hidden;
 }
 
-/* Код */
+
 .vp-doc div[class*='language-'] {
     border-radius: 16px;
+}
+
+.contact-page {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.contact-page h1 {
+    text-align: center;
+}
+
+.contact-page > p {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }

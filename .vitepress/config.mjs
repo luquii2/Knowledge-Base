@@ -23,6 +23,7 @@ export default defineConfig({
       { text: 'Люди', link: '/people/' },
       { text: 'Группы', link: '/bands/' },
         { text: 'Мероприятия', link: '/events/' },
+        { text: 'Обратная связь', link: '/contact/' },
     ],
 
     sidebar: {
@@ -192,7 +193,16 @@ export default defineConfig({
               ] },
           ]
         }
-      ]
+      ],
+        '/contact/': [
+            {
+                text: 'Обратная связь',
+                collapsed: false,
+                items: [
+                    { text: 'Форма обратной связи', link: '/contact/' },
+                ]
+            }
+        ],
     },
 
     outline: {
@@ -203,6 +213,12 @@ export default defineConfig({
       prev: 'Предыдущая страница',
       next: 'Следующая страница'
     },
+      returnToTopLabel: 'Наверх',
+      darkModeSwitchLabel: 'Оформление',
+      lightModeSwitchTitle: 'Включить тёмную тему',
+      lightModeSwitchAriaLabel: 'Включить тёмную тему',
+      darkModeSwitchTitle: 'Включить светлую тему',
+      darkModeSwitchAriaLabel: 'Включить светлую тему',
 
     sidebarMenuLabel: 'Меню',
   }
