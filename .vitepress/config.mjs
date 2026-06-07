@@ -22,6 +22,7 @@ export default defineConfig({
       { text: 'Места', link: '/places/' },
       { text: 'Люди', link: '/people/' },
       { text: 'Группы', link: '/bands/' },
+        { text: 'Мероприятия', link: '/events/' },
     ],
 
     sidebar: {
@@ -74,6 +75,15 @@ export default defineConfig({
           ]
         }
       ],
+        '/events/': [
+            {
+                text: 'Мероприятия',
+                collapsed: false,
+                items: [
+                    { text: 'Все мероприятия', link: '/events/' },
+                ]
+            }
+        ],
 
       '/people/': [
         {
