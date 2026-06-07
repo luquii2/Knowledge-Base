@@ -20,6 +20,8 @@
                 name="name"
                 placeholder="Например, Иван"
                 autocomplete="name"
+                :disabled="isLoading"
+                required
             />
           </label>
 
@@ -30,7 +32,8 @@
                 type="text"
                 name="contact"
                 placeholder="email@example.com или @username"
-                autocomplete="email"
+                :disabled="isLoading"
+                required
             />
           </label>
         </div>
@@ -42,6 +45,7 @@
               name="message"
               rows="7"
               placeholder="Напишите ваше сообщение"
+              :disabled="isLoading"
               required
           ></textarea>
         </label>
@@ -56,22 +60,16 @@
           </button>
 
           <p class="feedback-note">
-            Поля с именем и контактом можно оставить пустыми.
+            Заполните все поля, чтобы команда могла с вами связаться.
           </p>
         </div>
 
         <div
-            v-if="status === 'success'"
-            class="feedback-message feedback-message-success"
+            v-if="statusText"
+            class="feedback-message"
+            :class="isSuccess ? 'feedback-message-success' : 'feedback-message-error'"
         >
-          Сообщение отправлено. Спасибо!
-        </div>
-
-        <div
-            v-if="status === 'error'"
-            class="feedback-message feedback-message-error"
-        >
-          Не удалось отправить сообщение. Попробуйте позже.
+          {{ statusText }}
         </div>
       </form>
     </div>
@@ -81,7 +79,7 @@
 <script setup>
 import { reactive, ref } from 'vue'
 
-// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || ''
+const FEEDBACK_API_URL = 'https://kb-api-server.onrender.com/api/feedback'
 
 const form = reactive({
   name: '',
@@ -90,25 +88,53 @@ const form = reactive({
 })
 
 const isLoading = ref(false)
-const status = ref('')
+const statusText = ref('')
+const isSuccess = ref(false)
 
 async function submitForm() {
-  status.value = ''
+  statusText.value = ''
+  isSuccess.value = false
 
-  if (!form.message) {
-    status.value = 'error'
+  if (!form.name || !form.contact || !form.message) {
+    statusText.value = 'Пожалуйста, заполните все поля формы.'
     return
   }
 
   isLoading.value = true
 
-  setTimeout(() => {
+  try {
+    const response = await fetch(FEEDBACK_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: form.name,
+        contact: form.contact,
+        message: form.message
+      })
+    })
+
+    const data = await response.json()
+
+    if (!response.ok || !data.ok) {
+      throw new Error(data.message || 'Ошибка отправки')
+    }
+
     form.name = ''
     form.contact = ''
     form.message = ''
-    status.value = 'success'
+
+    isSuccess.value = true
+    statusText.value = 'Сообщение успешно отправлено. Спасибо!'
+  } catch (error) {
+    console.error(error)
+
+    isSuccess.value = false
+    statusText.value = 'Не удалось отправить сообщение. Попробуйте позже.'
+  } finally {
     isLoading.value = false
-  }, 700)
+  }
 }
 </script>
 
@@ -226,6 +252,12 @@ async function submitForm() {
   outline: none;
   border-color: var(--vp-c-brand-2);
   box-shadow: 0 0 0 4px var(--vp-c-brand-soft);
+}
+
+.feedback-field input:disabled,
+.feedback-field textarea:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .feedback-footer {
